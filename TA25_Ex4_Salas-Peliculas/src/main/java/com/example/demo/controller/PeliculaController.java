@@ -16,42 +16,43 @@ import com.example.demo.dto.Pelicula;
 import com.example.demo.service.PeliculaServiceImpl;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/peliculas")
 public class PeliculaController {
 
 	@Autowired
 	PeliculaServiceImpl peliculaServiceImpl;
 	
-	@GetMapping("/peliculas")
-	public List<Pelicula> listarSala(){
+	@GetMapping("/all")
+	public List<Pelicula> listarPelicula(){
 		return peliculaServiceImpl.listarPeliculas();
 	}
 	
-	@PostMapping("/peliculas")
-	public Pelicula salvarSala(@RequestBody Pelicula pelicula) {
+	@PostMapping("/add")
+	public Pelicula salvarPelicula(@RequestBody Pelicula pelicula) {
 		
 		return peliculaServiceImpl.guardarPelicula(pelicula);
 	}
 	
-	@GetMapping("/peliculas/{codigo}")
-	public Pelicula salaXID(@PathVariable(name="codigo") Integer codigo) {
-		
+	@GetMapping("/{id}")
+	public Pelicula peliculaXID(@PathVariable(name="id") Integer id) {
+		System.out.println("Pelicula XID: +booom");
+
 		Pelicula pelicula_xid= new Pelicula();
 		
-		pelicula_xid=peliculaServiceImpl.peliculaXID(codigo);
+		pelicula_xid=peliculaServiceImpl.peliculaXID(id);
 		
 		System.out.println("Pelicula XID: "+pelicula_xid);
 		
 		return pelicula_xid;
 	}
 	
-	@PutMapping("/peliculas/{codigo}")
-	public Pelicula actualizarArticulo(@PathVariable(name="codigo")Integer codigo,@RequestBody Pelicula pelicula) {
+	@PutMapping("/{id}")
+	public Pelicula actualizarPelicula(@PathVariable(name="id")Integer id,@RequestBody Pelicula pelicula) {
 		
 		Pelicula pelicula_seleccionada= new Pelicula();
 		Pelicula pelicula_actualizada= new Pelicula();
 		
-		pelicula_seleccionada= peliculaServiceImpl.peliculaXID(codigo);
+		pelicula_seleccionada= peliculaServiceImpl.peliculaXID(id);
 		
 		pelicula_seleccionada.setNombre(pelicula.getNombre());
 		pelicula_seleccionada.setEdad(pelicula.getEdad());
@@ -59,13 +60,13 @@ public class PeliculaController {
 		
 		pelicula_actualizada = peliculaServiceImpl.actualizarPelicula(pelicula_seleccionada);
 		
-		System.out.println("El almacen actualizado es: "+ pelicula_actualizada);
+		//System.out.println("El almacen actualizado es: "+ pelicula_actualizada);
 		
 		return pelicula_actualizada;
 	}
 	
-	@DeleteMapping("/peliculas/{codigo}")
-	public void eliminarDepartamento(@PathVariable(name="codigo") Integer codigo) {
-		peliculaServiceImpl.eliminarPelicula(codigo);
+	@DeleteMapping("/{id}")
+	public void eliminarPelicula(@PathVariable(name="id") Integer id) {
+		peliculaServiceImpl.eliminarPelicula(id);
 	}
 }

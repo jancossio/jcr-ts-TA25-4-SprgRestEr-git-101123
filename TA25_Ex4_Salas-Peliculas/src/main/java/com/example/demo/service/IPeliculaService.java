@@ -8,11 +8,11 @@ public interface IPeliculaService {
 
 	public List<Pelicula> listarPeliculas();
 	
-	public Pelicula guardarPelicula(Pelicula sala);
+	public Pelicula guardarPelicula(Pelicula pelicula);
 	
-	public Pelicula peliculaXID(Integer codigo);
+	public Pelicula peliculaXID(Integer id);
 	
-	public Pelicula actualizarPelicula(Pelicula sala);
+	public Pelicula actualizarPelicula(Pelicula pelicula);
 
-	public void eliminarPelicula(Integer codigo);
+	public void eliminarPelicula(Integer id);
 }

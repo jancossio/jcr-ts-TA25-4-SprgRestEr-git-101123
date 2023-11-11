@@ -21,27 +21,27 @@ public class PeliculaServiceImpl implements IPeliculaService{
 	}
 
 	@Override
-	public Pelicula guardarPelicula(Pelicula caja) {
+	public Pelicula guardarPelicula(Pelicula pelicula) {
 			
-		return iPeliculaDAO.save(caja);
+		return iPeliculaDAO.save(pelicula);
 	}
 
 	@Override
-	public Pelicula peliculaXID(Integer codigo) {
+	public Pelicula peliculaXID(Integer id) {
 			
-		return iPeliculaDAO.findById(codigo).get();
+		return iPeliculaDAO.findById(id).get();
 	}
 
 	@Override
-	public Pelicula actualizarPelicula(Pelicula caja) {
+	public Pelicula actualizarPelicula(Pelicula pelicula) {
 			
-		return iPeliculaDAO.save(caja);
+		return iPeliculaDAO.save(pelicula);
 	}
 
 	@Override
-	public void eliminarPelicula(Integer codigo) {
+	public void eliminarPelicula(Integer id) {
 		
-		iPeliculaDAO.deleteById(codigo);
+		iPeliculaDAO.deleteById(id);
 			
 	}
 }

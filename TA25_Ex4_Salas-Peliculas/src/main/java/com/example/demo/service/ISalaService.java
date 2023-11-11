@@ -10,9 +10,9 @@ public interface ISalaService {
 	
 	public Sala guardarSala(Sala sala);
 	
-	public Sala salaXID(Integer codigo);
+	public Sala salaXID(Integer id);
 	
 	public Sala actualizarSala(Sala sala);
 
-	public void eliminarSala(Integer codigo);
+	public void eliminarSala(Integer id);
 }

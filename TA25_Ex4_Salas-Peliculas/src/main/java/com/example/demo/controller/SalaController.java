@@ -16,42 +16,42 @@ import com.example.demo.dto.Sala;
 import com.example.demo.service.SalaServiceImpl;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/salas")
 public class SalaController {
 
 	@Autowired
 	SalaServiceImpl salaServiceImpl;
 	
-	@GetMapping("/salas")
+	@GetMapping("/all")
 	public List<Sala> listarSala(){
 		return salaServiceImpl.listarSalas();
 	}
 	
-	@PostMapping("/salas")
+	@PostMapping("/add")
 	public Sala salvarSala(@RequestBody Sala sala) {
 		
 		return salaServiceImpl.guardarSala(sala);
 	}
 	
-	@GetMapping("/salas/{codigo}")
-	public Sala salaXID(@PathVariable(name="codigo") Integer codigo) {
+	@GetMapping("/{id}")
+	public Sala salaXID(@PathVariable(name="id") Integer id) {
 		
 		Sala sala_xid= new Sala();
 		
-		sala_xid=salaServiceImpl.salaXID(codigo);
+		sala_xid=salaServiceImpl.salaXID(id);
 		
-		System.out.println("Sala XID: "+sala_xid);
+		//System.out.println("Sala XID: "+sala_xid);
 		
 		return sala_xid;
 	}
 	
-	@PutMapping("/salas/{num_Referencia}")
-	public Sala actualizarArticulo(@PathVariable(name="codigo")Integer codigo,@RequestBody Sala sala) {
+	@PutMapping("/{id}")
+	public Sala actualizarSala(@PathVariable(name="id")Integer id,@RequestBody Sala sala) {
 		
 		Sala sala_seleccionada= new Sala();
 		Sala sala_actualizada= new Sala();
 		
-		sala_seleccionada= salaServiceImpl.salaXID(codigo);
+		sala_seleccionada= salaServiceImpl.salaXID(id);
 		
 		sala_seleccionada.setNombre(sala.getNombre());
 		sala_seleccionada.setPelicula(sala.getPelicula());
@@ -64,8 +64,8 @@ public class SalaController {
 		return sala_actualizada;
 	}
 	
-	@DeleteMapping("/salas/{codigo}")
-	public void eliminarDepartamento(@PathVariable(name="codigo") Integer codigo) {
-		salaServiceImpl.eliminarSala(codigo);
+	@DeleteMapping("/{id}")
+	public void eliminarSala(@PathVariable(name="id") Integer id) {
+		salaServiceImpl.eliminarSala(id);
 	}
 }

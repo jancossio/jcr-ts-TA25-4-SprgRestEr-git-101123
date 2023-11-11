@@ -21,27 +21,27 @@ public class SalaServiceImpl implements ISalaService{
 	}
 
 	@Override
-	public Sala guardarSala(Sala caja) {
+	public Sala guardarSala(Sala sala) {
 			
-		return iSalaDAO.save(caja);
+		return iSalaDAO.save(sala);
 	}
 
 	@Override
-	public Sala salaXID(Integer codigo) {
+	public Sala salaXID(Integer id) {
 			
-		return iSalaDAO.findById(codigo).get();
+		return iSalaDAO.findById(id).get();
 	}
 
 	@Override
-	public Sala actualizarSala(Sala caja) {
+	public Sala actualizarSala(Sala sala) {
 			
-		return iSalaDAO.save(caja);
+		return iSalaDAO.save(sala);
 	}
 
 	@Override
-	public void eliminarSala(Integer codigo) {
+	public void eliminarSala(Integer id) {
 		
-		iSalaDAO.deleteById(codigo);
+		iSalaDAO.deleteById(id);
 			
 	}
 }
